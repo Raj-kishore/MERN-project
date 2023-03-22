@@ -1,0 +1,11 @@
+const mogoose = require('mongoose')
+
+const { DB_CON_STRING } = process.env
+
+module.exports = () => {
+    debugger;
+    mogoose.connect("mongodb://127.0.0.1:27017/ecom")
+    // mogoose.connect("mongodb+srv://abidrazaa:Abcd1234@cluster0.lr2rk.mongodb.net/?retryWrites=true&w=majority")
+        .then(() => console.log('DB Connection Successfull'))
+        .catch(err => console.log(err.message)) 
+}

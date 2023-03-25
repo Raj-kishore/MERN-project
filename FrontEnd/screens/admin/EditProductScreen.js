@@ -84,10 +84,10 @@ const EditProductScreen = ({ navigation, route }) => {
       setError("Please upload the product image");
       setIsloading(false);
     } else {
-      console.log(`${network.serverip}"/update-product?id=${product._id}"`);
+      console.log(`${network.serverip}/update-product?id=${product._id}`);
       fetch(
         `${network.serverip}/update-product?id=${product._id}`,
-        requestOptions
+        requestOptions.body
       )
         .then((response) => response.json())
         .then((result) => {
@@ -103,7 +103,7 @@ const EditProductScreen = ({ navigation, route }) => {
         .catch((error) => {
           setIsloading(false);
           setError(error.message);
-          console.log("error", error);
+          console.log("error",requestOptions.body);
         });
     }
   };
@@ -111,11 +111,11 @@ const EditProductScreen = ({ navigation, route }) => {
   // set all the input fields and image on initial render
   useEffect(() => {
     setImage(`${network.serverip}/uploads/${product?.image}`);
-    setTitle(product.title);
-    setSku(product.sku);
-    setQuantity(product.quantity.toString());
-    setPrice(product.price.toString());
-    setDescription(product.description);
+    setTitle(product.title?product.title:"");
+    setSku(product.sku?product.sku:"");
+    setQuantity(product.quantity?product.quantity.toString():"");
+    setPrice(product.price? product.price.toString():"");
+    setDescription(product.description?product.description:"");
   }, []);
 
   return (

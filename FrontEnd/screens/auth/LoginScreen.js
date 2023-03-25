@@ -102,7 +102,8 @@ const LoginScreen = ({ navigation }) => {
       })
       .catch((error) => {
         setIsloading(false);
-        console.log("error", setError(error.message));
+        setError(error.message);
+        console.log("error", error.message);
       });
   };
 

@@ -199,6 +199,7 @@ const styles = StyleSheet.create({
   logo: {
     resizeMode: "contain",
     width: 80,
+    height:80
   },
   forgetPasswordContainer: {
     marginTop: 10,
